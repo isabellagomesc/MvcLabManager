@@ -1,14 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using MvcLabManager.Models;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args); //configura como a aplicação comporta
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<LabManagerContext>(options => 
-    options.UseMySQL("server=localhost;database=estudante;user=estudante;password=estudante")
-);
+builder.Services.AddDbContext<LabManagerContext>(options => options.UseMySQL("server=localhost;database=estudante;user=estudante;password=12345678;"));
 
 var app = builder.Build();
 
