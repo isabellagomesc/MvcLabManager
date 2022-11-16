@@ -5,7 +5,7 @@ namespace MvcLabManager.Controllers;
 
 public class LabController : Controller
 {
-    private readonly LabManagerContext _context; 
+    private readonly LabManagerContext _context; //nao é possivel mudar
 
     public LabController(LabManagerContext context)
     {
@@ -66,6 +66,11 @@ public class LabController : Controller
     [HttpPost]
     public IActionResult Add(Lab lab)
     {
+        if(!ModelState.IsValid) 
+        {
+            return View(lab);
+        }
+
         _context.Labs.Add(lab);
         _context.SaveChanges();
 
@@ -75,6 +80,11 @@ public class LabController : Controller
     [HttpPost]
     public IActionResult Update(Lab lab, int id)
     {
+        if(!ModelState.IsValid) 
+        {
+            return View(lab);
+        }
+
         Lab updateLab = _context.Labs.Find(lab.Id);
         
         updateLab.Number = lab.Number;

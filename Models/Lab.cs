@@ -1,10 +1,17 @@
 namespace MvcLabManager.Models;
+using System.ComponentModel.DataAnnotations;
 
 public class Lab
 {
     public int Id { get; set; }
+
+    [Required(ErrorMessage = "Preencha o campo")]
     public int Number { get; set; }
+
+    [Required(ErrorMessage = "Preencha o campo")]
     public string Name { get; set; }
+
+    [Required(ErrorMessage = "Preencha o campo")]
     public string Block { get; set; }
 
     public Lab() { }
